@@ -43,6 +43,7 @@ protected:
 class CloudContainer : public Object
 {
 public:
+    bool m_drawSun;
     float m_anvilAmount;
     float m_lightMultiplicator;
     float m_timeFactor;
@@ -64,19 +65,21 @@ public:
         setMesh(&Shapes::cube);
         setTextureTypeTo3D();
         setFaceCulling(false);
+        m_drawSun = true;
         m_anvilAmount = 0;
-        m_lightMultiplicator = 10;
+        m_lightMultiplicator = 20;
         m_timeFactor = 0;
         m_globalCoverage = 1.0;
-        m_globalDensity = 5;
+        m_globalDensity = 7;
         m_lightPower = 100;
-        m_minHeight = 0.f;
+        m_minHeight = 0.4f;
         m_maxHeight = 1.f;
         m_minDensity = 0.f;
         m_maxDensity = 1.f;
         m_lightPos = glm::vec3(50, 150, 50);
         m_vboxMin = glm::vec3(0, 80, 0);
         m_vboxMax = glm::vec3(100, 130, 100);
+        
 
     }
 
@@ -88,6 +91,7 @@ public:
     ) override
     {
         shaders.use("nuage");
+
         glm::mat4 pInv = glm::inverse(projection);
         glm::mat4 vInv = glm::inverse(view);
         glm::mat4 vpInv = vInv * pInv;
@@ -99,9 +103,9 @@ public:
 
         glm::mat4 mvp = p * v * m;
         glm::mat4 mvpInv = glm::inverse(mvp);
-
-        shaders.setVec3("nuage","vmin", glm::vec3(0));
-        shaders.setVec3("nuage","vmax", glm::vec3(1));
+        shaders.setInt("nuage", "drawSun", m_drawSun);
+        shaders.setVec3("nuage","vmin", m_vboxMin);
+        shaders.setVec3("nuage","vmax", m_vboxMax);
         shaders.setVec3("nuage","lightpos", m_lightPos);
         shaders.setFloat("nuage","lightpower", m_lightPower);
         shaders.setFloat("nuage","lightMultiplicator", m_lightMultiplicator);

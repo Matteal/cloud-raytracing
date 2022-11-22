@@ -9,6 +9,8 @@ uniform mat4 mvMatrix;
 uniform sampler3D shape;
 uniform sampler3D detail;
 
+uniform bool drawSun;
+
 // WEATHER MAP
 uniform sampler2D weathermap;
 
@@ -470,16 +472,16 @@ void main()
         float light = density_light.y;
 
         //float density = computeCloudDensity(entry, exit, 50);
-        fragment_color = vec4(bgcolor.xyz, exp(-density)) * (1-light) + lightcolor * light;
+        fragment_color = vec4(bgcolor.xyz, 1 - exp(-density)) * (1-light) + lightcolor * light;
+        //if(fragment_color.a == 1.0) fragment_color = vec4(0.0); 
     }
-    // Si pas d'intersection:
-    else    fragment_color = fragment_color * vec4(0.0, 0.0, 0.0, 0.0);
+    else    fragment_color = vec4(0.0);
 
     // Affichage lumière
     vec3 dir_to_light = normalize(lightpos - o);
     float angle = angle_between_normed_vec3(d, dir_to_light);
     // 0.03490658503988659rad ~= 2deg
-    if ( angle < 0.03490658503988659 && angle > -0.03490658503988659) {
+    if (drawSun && angle < 0.03490658503988659 && angle > -0.03490658503988659) {
         fragment_color = fragment_color + lightcolor * lum;
         return;
     }
