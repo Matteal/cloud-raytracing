@@ -7,6 +7,8 @@
   * Génération d'un nuage par bruit 3D (mix perlin/worley)
   * Affichage en temps réel par lancer de rayons avec élairage par une source de lumière
 
+!(/data/preview.png).
+
 ## Librairies utilisées
 
 * **Glad**: \
