@@ -2,9 +2,9 @@
 
 int main(int argc, char*argv[])
 {
-    /*std::string name = "";
+    std::string name = "";
     bool wrongFormat = false;
-    std::cout<<argc<<std::endl;
+    std::cout<<"Nombre d'arguments" << argc<<std::endl;
     if(argc < 6)
     {
         std::cout<<"Erreur : Format invalide"<<std::endl;
@@ -37,8 +37,8 @@ int main(int argc, char*argv[])
             atoi(argv[4])
         };
         int worleySeed = atoi(argv[5]);
-        std::cout<<worleySeed<<std::endl;
-        std::string name = "";
+        std::cout<<"worleySeed : " << worleySeed <<std::endl;
+        std::string name = "texture";
         if(argc <= 7)
         {
             if(argc == 7)
@@ -61,7 +61,7 @@ int main(int argc, char*argv[])
             writer.write3D4Chan(WDH, WR, worleySeed, O, S, F, name);
             std::cout<<"Ecriture d'une texture 3D4CHAN terminer"<<std::endl;
         }
-    }*/
+    }
 
     Textures writer;
 

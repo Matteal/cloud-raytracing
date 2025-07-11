@@ -203,7 +203,7 @@ void writeAndLoad(Textures & tex, bool & endRegen)
 void Engine::run()
 {
     
-    glfwSetInputMode(m_engineWindow->getWindow(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    //glfwSetInputMode(m_engineWindow->getWindow(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);
     float time = 0;
     glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
     glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);

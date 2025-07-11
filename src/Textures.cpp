@@ -213,7 +213,11 @@ bool Textures::write3D4Chan(int WDH, int WR[3], int WorleySeed, int O, int S, in
     uchar toFile[4];
     while(i < WDH * WDH * WDH * nrChannels)
     {
-        toFile[0] = (uchar)(((1+F.GetNoise(x, y, z))/2.0) * 255); // channel 0
+        //toFile[0] = (uchar)(((1+F.GetNoise(x, y, z))/2.0) * 255); // channel 0
+        float val = (1.0f + F.GetNoise(x, y, z)) / 2.0f;
+        val = std::max(val, 0.35f);  // remplace tous les petits par 0.35
+        val = std::clamp((val + 0.25f) * 1.2f, 0.0f, 1.0f);
+
         toFile[1] = (uchar)(W[0].get3d(x, y, z) *  255);          // channel 1
         toFile[2] = (uchar)(W[1].get3d(x, y, z) *  255);          // channel 2
         toFile[3] = (uchar)(W[2].get3d(x, y, z) *  255);          // channel 3

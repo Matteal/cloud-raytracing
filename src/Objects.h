@@ -70,15 +70,15 @@ public:
         m_lightMultiplicator = 20;
         m_timeFactor = 0;
         m_globalCoverage = 1.0;
-        m_globalDensity = 7;
+        m_globalDensity = 8;
         m_lightPower = 100;
         m_minHeight = 0.4f;
         m_maxHeight = 1.f;
         m_minDensity = 0.f;
         m_maxDensity = 1.f;
         m_lightPos = glm::vec3(50, 150, 50);
-        m_vboxMin = glm::vec3(0, 80, 0);
-        m_vboxMax = glm::vec3(100, 130, 100);
+        m_vboxMin = glm::vec3(-50, 10, -50);
+        m_vboxMax = glm::vec3(50, 60, 50);
         
 
     }
